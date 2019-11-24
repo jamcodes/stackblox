@@ -12,8 +12,8 @@ conan install --update .. -s os=iOS -s arch=armv7 -s os.version=8.0 -s compiler.
 
 cmake -G Xcode -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_ARCHITECTURES="armv7 arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET=8.0 -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY ..
 
-python3 ../add_xcode_folder_reference.py --project=/Users/steve/Code/stackblox/build_ios/StackBlox.xcodeproj/project.pbxproj --folderPath=src/StackBlox.xcassets --target=StackBlox
-python3 ../add_xcode_folder_reference.py --project=/Users/steve/Code/stackblox/build_ios/StackBlox.xcodeproj/project.pbxproj --folderPath=src/assets --target=StackBlox
+python3 ../add_xcode_folder_reference.py --project=StackBlox.xcodeproj/project.pbxproj --folderPath=src/StackBlox.xcassets --target=StackBlox
+python3 ../add_xcode_folder_reference.py --project=StackBlox.xcodeproj/project.pbxproj --folderPath=src/assets --target=StackBlox
 
 cmake --build . --config Release
 
