@@ -18,7 +18,6 @@ before_script:
     - cat /proc/meminfo | grep MemTotal
     - java -version
     - ./build_$android_arch.sh
-    - cd build_$android_arch
   artifacts:
     paths:
       - build_$android_arch/_package/*.apk
@@ -40,8 +39,12 @@ ios:
   stage: build
   script:
     - ./build_ios.sh
+    - xcrun altool --upload-app --file build_ios/StackBlox.ipa --type ios --username ssrobins@gmail.com --password $APPLEID_PASSWORD
   tags:
     - ios
+  artifacts:
+    paths:
+      - build_ios/*.ipa
   except:
     variables:
       - $desktop_only == "true"
